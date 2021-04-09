@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PathFollowing.Main", "PathFollowing.Main\PathFollowing.Main.csproj", "{8DEDF5CE-3768-4111-B3F3-65470767D56E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PathFollowing.Main", "PathFollowing.Main\PathFollowing.Main.csproj", "{8DEDF5CE-3768-4111-B3F3-65470767D56E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PathFollowing.Data", "PathFollowing.Data\PathFollowing.Data.csproj", "{6274FEDE-B10E-44CB-AEEC-BC47F08CCE9F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{8DEDF5CE-3768-4111-B3F3-65470767D56E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DEDF5CE-3768-4111-B3F3-65470767D56E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DEDF5CE-3768-4111-B3F3-65470767D56E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6274FEDE-B10E-44CB-AEEC-BC47F08CCE9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6274FEDE-B10E-44CB-AEEC-BC47F08CCE9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6274FEDE-B10E-44CB-AEEC-BC47F08CCE9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6274FEDE-B10E-44CB-AEEC-BC47F08CCE9F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
