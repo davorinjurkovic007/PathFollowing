@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PathFollowing.Data;
+using System;
 
 namespace PathFollowing.Main
 {
@@ -6,21 +7,14 @@ namespace PathFollowing.Main
     {
         const int ExitProgram = 0;
 
+        static char[,] pathMatrix;
+
         public static void Main(string[] args)
         {
             int selectedMap = MapSelection();
+            ReturnedBoard(selectedMap, out pathMatrix);
 
-            if (selectedMap != ExitProgram)
-            {
-                Console.WriteLine("Continue program");
-            }
-            else
-            {
-                Console.WriteLine("Program is Exit");
-            }
         }
-
-        
 
         private static int MapSelection()
         {
@@ -29,6 +23,12 @@ namespace PathFollowing.Main
             Console.WriteLine("Find the way.");
 
             int selectedMap = mapSelection.GetNumberForMap(ShowPosibleMaps());
+
+            if(selectedMap == ExitProgram)
+            {
+                Console.WriteLine("Exit application.");
+                Environment.Exit(1);
+            }
 
             return selectedMap;
         }
@@ -51,6 +51,13 @@ namespace PathFollowing.Main
             var selectedPath = Console.ReadLine();
 
             return selectedPath;
+        }
+
+        private static void ReturnedBoard(int selectedMap, out char[,] board)
+        {
+            DataRequest dataRequest = new DataRequest(selectedMap);
+
+            board = new char[1, 1];
         }
     }
 }
