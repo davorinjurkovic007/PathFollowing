@@ -1,4 +1,5 @@
 ﻿using PathFollowing.Data;
+using PathFollowing.Data.Exceptions;
 using System;
 
 namespace PathFollowing.Main
@@ -8,12 +9,14 @@ namespace PathFollowing.Main
         const int ExitProgram = 0;
 
         static char[,] pathMatrix;
+        static int startPositionX = -1;
+        static int startPositionY = -1;
 
         public static void Main(string[] args)
         {
             int selectedMap = MapSelection();
             ReturnedBoard(selectedMap, out pathMatrix);
-
+            string something = string.Empty;
         }
 
         private static int MapSelection()
@@ -46,6 +49,7 @@ namespace PathFollowing.Main
             Console.WriteLine("8: Map 8 - multiple starts.");
             Console.WriteLine("9: Map 9 - multiple ends.");
             Console.WriteLine("10: Map 10 - T forks.");
+            Console.WriteLine("11: Map 11 - Real T fork example.");
             Console.WriteLine("Any other choice: Exit");
 
             var selectedPath = Console.ReadLine();
@@ -56,8 +60,51 @@ namespace PathFollowing.Main
         private static void ReturnedBoard(int selectedMap, out char[,] board)
         {
             DataRequest dataRequest = new DataRequest(selectedMap);
+           
+            try
+            {
+                dataRequest.GetBoard();
+            }
+            catch(FilePahtException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Exit application");
+                Environment.Exit(2);
+            }
+            catch(IllegalSignException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Exit application");
+                Environment.Exit(2);
+            }
+            catch(MoreThanOneStartPositionException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Exit application");
+                Environment.Exit(2);
+            }
+            catch(MoreThanOneEndPositionException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Exit application");
+                Environment.Exit(2);
+            }
+            catch(NoneStartPositionException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Exit application");
+                Environment.Exit(2);
+            }
+            catch(NoneEndPositionException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Exit application");
+                Environment.Exit(2);
+            }
 
-            board = new char[1, 1];
+            board = dataRequest.Board;
+            startPositionX = dataRequest.StartRowIndex;
+            startPositionY = dataRequest.StartColumnIndex;
         }
     }
 }

@@ -26,7 +26,7 @@ namespace PathFollowing.Main
                 return 0;
             }
 
-            if(numberOfSelectedMap <= 0 || numberOfSelectedMap > 10)
+            if(numberOfSelectedMap <= 0 || numberOfSelectedMap > 11)
             {
                 Console.WriteLine("That map does not exist.");
 

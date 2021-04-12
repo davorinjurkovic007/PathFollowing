@@ -5,10 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="Files\Map 1-Basic example.txt">
+    <None Update="Files\Map 1 - Basic example.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Files\Map 10 - T forks.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Files\Map 11 - Real T fork example.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Files\Map 2 - go straight through intersections.txt">

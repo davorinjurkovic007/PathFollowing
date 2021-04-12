@@ -24,7 +24,8 @@ namespace PathFollowing.Test.Main
             yield return new object[] { "8", 8 };
             yield return new object[] { "9", 9 };
             yield return new object[] { "10", 10 };
-            yield return new object[] { "11", 0 };
+            yield return new object[] { "11", 11 };
+            yield return new object[] { "12", 0 };
             yield return new object[] { "13", 0 };
             yield return new object[] { "101", 0 };
             yield return new object[] { "", 0 };
