@@ -183,7 +183,7 @@ namespace PathFollowing.Data
 
             Board = board;
             StartRowIndex = startRowIndex;
-            StartColumnIndex = StartColumnIndex;
+            StartColumnIndex = starColumnIndex;
         }
 
         private static bool CheckIsAsciiElement(char letter)

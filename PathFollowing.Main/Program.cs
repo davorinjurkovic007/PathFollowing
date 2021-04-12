@@ -1,4 +1,6 @@
-﻿using PathFollowing.Data;
+﻿using PathFollowing.Core;
+using PathFollowing.Core.Exceptions;
+using PathFollowing.Data;
 using PathFollowing.Data.Exceptions;
 using System;
 
@@ -16,7 +18,7 @@ namespace PathFollowing.Main
         {
             int selectedMap = MapSelection();
             ReturnedBoard(selectedMap, out pathMatrix);
-            string something = string.Empty;
+            FoundedPath();
         }
 
         private static int MapSelection()
@@ -38,7 +40,7 @@ namespace PathFollowing.Main
 
         private static string ShowPosibleMaps()
         {
-            Console.WriteLine("Please select one number from 1 to 10:");
+            Console.WriteLine("Please select one number from 1 to 11:");
             Console.WriteLine("1: Map 1 - a basic example.");
             Console.WriteLine("2: Map 2 - go straight through intersections.");
             Console.WriteLine("3: Map 3 - letters may be found on turns.");
@@ -106,5 +108,39 @@ namespace PathFollowing.Main
             startPositionX = dataRequest.StartRowIndex;
             startPositionY = dataRequest.StartColumnIndex;
         }
+
+        private static void FoundedPath()
+        {
+            BoardReader boardReader = new BoardReader(pathMatrix, startPositionX, startPositionY);
+            try
+            {
+                boardReader.StartReading();
+            }
+            catch(TForkExcetion ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Exit application");
+                Environment.Exit(2);
+            }
+
+            var letters = boardReader.PathOfLettersOnBoard;
+            var pathAsCharacter = boardReader.PathOfBoard;
+
+            Console.WriteLine("Letters");
+            foreach(var letter in letters)
+            {
+                Console.Write(letter);
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Path as characters:");
+            foreach(var elementOfPath in pathAsCharacter)
+            {
+                Console.Write(elementOfPath);
+            }
+            Console.WriteLine();
+            Console.WriteLine("End");
+        }
+
     }
 }

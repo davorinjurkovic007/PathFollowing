@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PathFollowing.Core\PathFollowing.Core.csproj" />
     <ProjectReference Include="..\PathFollowing.Data\PathFollowing.Data.csproj" />
   </ItemGroup>
 
