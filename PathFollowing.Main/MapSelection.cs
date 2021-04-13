@@ -8,6 +8,9 @@ namespace PathFollowing.Main
 {
     public class MapSelection
     {
+        const int PosibleMinimumSelectedMap = 1;
+        const int PosibleMaximumSelectedMap = 11;
+
         public int GetNumberForMap(string chosenAnswer)
         {
             int selectedMap = CheckMapSelection(chosenAnswer);
@@ -26,7 +29,7 @@ namespace PathFollowing.Main
                 return 0;
             }
 
-            if(numberOfSelectedMap <= 0 || numberOfSelectedMap > 11)
+            if(numberOfSelectedMap < PosibleMinimumSelectedMap || numberOfSelectedMap > PosibleMaximumSelectedMap)
             {
                 Console.WriteLine("That map does not exist.");
 

@@ -223,11 +223,12 @@ namespace PathFollowing.Core
             bool isNextElementFinded = false;
             bool isTForkPossible = false;
             Location tempLocation = new Location();
-            foreach(var locations in listFindedLocation)
+            int numberOfNotNullLocations = CheckNotNulElementsInList(listFindedLocation);
+            foreach (var locations in listFindedLocation)
             {
                 if (locations.Element != Elements.EmptyPosition)
                 {
-                    isNextElementFinded = CheckElement(locations, listFindedLocation.Count);
+                    isNextElementFinded = CheckElement(locations, numberOfNotNullLocations);
 
                     if(isNextElementFinded)
                     {
@@ -243,6 +244,11 @@ namespace PathFollowing.Core
                 }
             }
 
+            if(tempLocation.Element == '\0')
+            {
+                throw new EmptyElementException($"Invalid map! Empty element found on path!");
+            }
+
             pathOfBoard.Add(tempLocation.Element);
             AddAlphabeticalLetterToList(tempLocation.Element);
 
@@ -252,6 +258,21 @@ namespace PathFollowing.Core
             currentFindedElement = tempLocation.Element;
 
             return currentFindedElement;
+        }
+
+        private int CheckNotNulElementsInList(List<Location> listFilledLocation)
+        {
+            int numberOfNotNullElements = 0;
+
+            foreach(var location in listFilledLocation)
+            {
+                if(location.Element != Elements.EmptyPosition)
+                {
+                    numberOfNotNullElements++;
+                }
+            }
+
+            return numberOfNotNullElements;
         }
 
         private bool CheckElement(Location locationToCheck, int numberOfElements)
@@ -304,10 +325,7 @@ namespace PathFollowing.Core
                 directionYToCheck = currentLocationY == locationToCheck.PositionY ? true : false;
                 if (directionYToCheck)
                 {
-                    if (previousLocation.Element == Elements.DirectionUpDown)
-                    {
-                        goWithY = true;
-                    }
+                    goWithY = true;
                 }
             }
 
@@ -338,10 +356,7 @@ namespace PathFollowing.Core
                 directionXToCheck = currentLocationX == locationToCheck.PositionX ? true : false;
                 if (directionXToCheck)
                 {
-                    if (previousLocation.Element == Elements.DirectionLeftRight)
-                    {
-                        goWithX = true;
-                    }
+                    goWithX = true;   
                 }
             }
 

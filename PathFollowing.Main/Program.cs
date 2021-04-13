@@ -122,6 +122,12 @@ namespace PathFollowing.Main
                 Console.WriteLine("Exit application");
                 Environment.Exit(2);
             }
+            catch(EmptyElementException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Exit application");
+                Environment.Exit(2);
+            }
 
             var letters = boardReader.PathOfLettersOnBoard;
             var pathAsCharacter = boardReader.PathOfBoard;

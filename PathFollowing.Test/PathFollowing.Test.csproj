@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PathFollowing.Core\PathFollowing.Core.csproj" />
     <ProjectReference Include="..\PathFollowing.Main\PathFollowing.Main.csproj" />
   </ItemGroup>
 
